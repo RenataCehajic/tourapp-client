@@ -37,17 +37,9 @@ export const getAllTours = () => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
 
-    const token = selectToken(getState());
+    //const token = selectToken(getState());
     try {
-      const response = await axios.get(
-        `${apiUrl}/tours`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.get(`${apiUrl}/tours`);
       console.log(`RESPONSE I GOT:`, response);
       dispatch(getTours(response.data));
       dispatch(appDoneLoading());

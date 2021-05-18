@@ -53,8 +53,8 @@ function App() {
       {isLoading ? <Loading /> : null}
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/admin/createtour" component={CreateTourPage} />
-        <Route path="/admin/tours" component={allToursPage} />
+        <Route path="/addtour" component={CreateTourPage} />
+        <Route path="/tours" component={allToursPage} />
         <Route path="/other" component={Other} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
