@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { Col } from "react-bootstrap";
 import { CreateTour } from "../../store/admin/action";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { selectUser } from "../../store/user/selectors";
 const moment = require("moment");
 const TourCreation = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const user = useSelector(selectUser);
   const [form, setform] = useState({
     name: "",
     cafes: "",
@@ -37,6 +41,11 @@ const TourCreation = () => {
     });
   }
 
+  useEffect(() => {
+    if (!user) {
+      history.push("/");
+    }
+  });
   return (
     <Container>
       <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">
