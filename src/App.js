@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import Container from "react-bootstrap/Container";
 import "./App.css";
 
 import { Switch, Route } from "react-router-dom";
@@ -14,9 +16,17 @@ import { getUserWithStoredToken } from "./store/user/actions";
 import { Jumbotron } from "react-bootstrap";
 
 const Home = () => (
-  <Jumbotron>
-    <h1>Home</h1>
-  </Jumbotron>
+  <div>
+    <Container>
+      <Link
+        to={"/tours"}
+        className="btn btn-lg btn-primary"
+        style={{ marginTop: "300px", marginLeft: "300px" }}
+      >
+        View Free Walking Tours in Amsterdam
+      </Link>
+    </Container>
+  </div>
 );
 const Other = () => (
   <Jumbotron>
