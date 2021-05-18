@@ -20,7 +20,7 @@ const Home = () => (
     <Container>
       <Link
         to={"/tours"}
-        className="btn btn-lg btn-primary"
+        className="btn btn-lg btn-info"
         style={{ marginTop: "300px", marginLeft: "300px" }}
       >
         View Free Walking Tours in Amsterdam
