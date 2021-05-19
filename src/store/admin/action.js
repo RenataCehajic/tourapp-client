@@ -14,6 +14,7 @@ export const GETALLTOURS = "GETALLTOURS";
 export const SAVEDETAILEDTOUR = "SAVEDETAILEDTOUR";
 export const ADDTOUR = "ADDTOUR";
 export const DELETETOUR = "DELETETOUR";
+export const UPDATED_TOUR_LIKES = "UPDATED_TOUR_LIKES";
 
 const getTours = (tours) => {
   return {
@@ -42,6 +43,11 @@ const deleteTour = (tour) => {
     payload: tour,
   };
 };
+
+export const incrementingLikes = (rate) => ({
+  type: UPDATED_TOUR_LIKES,
+  payload: rate,
+});
 
 export const getAllTours = () => {
   return async (dispatch, getState) => {
@@ -186,5 +192,13 @@ export const enrollToTour = (tourid) => {
         dispatch(setMessage("danger", true, error.message));
       }
     }
+  };
+};
+
+export const incrementLikes = (tourid) => {
+  return async (dispatch, getState) => {
+    const response = await axios.patch(`${apiUrl}/tours/${tourid}`);
+    console.log("what do I get", response.data);
+    dispatch(incrementingLikes(response.data));
   };
 };

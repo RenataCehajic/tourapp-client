@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getDetailedTour } from "../../store/admin/action";
+import { getDetailedTour, incrementLikes } from "../../store/admin/action";
 import { enrollToTour } from "../../store/admin/action";
 import { getDetailedTourSelector } from "../../store/admin/selector";
 import { selectUser } from "../../store/user/selectors";
@@ -24,11 +24,42 @@ function DetailedTourPages() {
     dispatch(enrollToTour(tourid));
   };
 
+  const likeTour = () => {
+    dispatch(incrementLikes(tourid));
+  };
+
   return (
     <div>
       <div class="jumbotron bg-dark text-white jumbotron-fluid">
         <div class="container">
           <h1 class="display-4">{tour.title}</h1>
+          <div style={{ marginTop: "40px" }}>
+            {user.token ? (
+              <h4
+                style={{
+                  color: "#fff",
+                  marginTop: "3rem",
+                  marginBottom: "20px",
+                }}
+              >
+                {" "}
+                Like
+                <div>
+                  <Button
+                    style={{
+                      backgroundColor: "#fdff00",
+                      borderColor: "#000",
+                      marginTop: "10px",
+                    }}
+                    onClick={likeTour}
+                  >
+                    <span style={{ fontSize: "2rem" }}>❤</span>{" "}
+                  </Button>
+                  <p class="lead">{tour.rate}</p>
+                </div>
+              </h4>
+            ) : null}
+          </div>
           <p class="lead">{tour.district}</p>
           <p class="lead">{tour.description}</p>
           <p class="lead">Cafes: {tour.cafes}</p>

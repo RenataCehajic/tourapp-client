@@ -1,4 +1,10 @@
-import { GETALLTOURS, DELETETOUR, ADDTOUR, SAVEDETAILEDTOUR } from "./action";
+import {
+  GETALLTOURS,
+  DELETETOUR,
+  ADDTOUR,
+  SAVEDETAILEDTOUR,
+  UPDATED_TOUR_LIKES,
+} from "./action";
 
 const initialState = {
   tours: [],
@@ -28,6 +34,11 @@ export default function reducer(state = initialState, action) {
         tours: newtourArray,
       };
     }
+    case UPDATED_TOUR_LIKES:
+      return {
+        ...state,
+        ...action.payload,
+      };
 
     default:
       return state;
