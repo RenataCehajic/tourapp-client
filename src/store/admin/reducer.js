@@ -21,7 +21,7 @@ export default function reducer(state = initialState, action) {
       return { ...state, tours: [...state.tours, action.payload] };
     case DELETETOUR: {
       const newtourArray = state.tours.filter((newarr) => {
-        return newarr.id !== action.payload.id;
+        return newarr.id !== action.payload.deletedTour;
       });
       return {
         ...state,

@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllTours } from "../../store/admin/action";
 import { getAllToursSelector } from "../../store/admin/selector";
 import TourTableComponent from "../../components/Tour/tour";
+
 const moment = require("moment");
 
 const Alltours = () => {
   const dispatch = useDispatch();
   const alltours = useSelector(getAllToursSelector);
+
   console.log(alltours);
 
   const [selectedOption, set_selectedOption] = useState("all");
@@ -58,6 +60,7 @@ const Alltours = () => {
             ? alltours.map((tour) => {
                 return (
                   <TourTableComponent
+                    id={tour.id}
                     title={tour.title}
                     id={tour.id}
                     key={tour.id}
@@ -71,6 +74,7 @@ const Alltours = () => {
             : filteredTours.map((tour) => {
                 return (
                   <TourTableComponent
+                    id={tour.id}
                     title={tour.title}
                     id={tour.id}
                     key={tour.id}

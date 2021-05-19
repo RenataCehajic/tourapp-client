@@ -116,15 +116,12 @@ export const DeleteTour = (tourId) => {
     const token = selectToken(getState());
 
     try {
-      const response = await axios.delete(
-        `${apiUrl}/${tourId}`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.delete(`${apiUrl}/tours/${tourId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(`RESPONSE DELETED TOUR`, response);
       dispatch(deleteTour(response.data));
       dispatch(appDoneLoading());
     } catch (error) {
