@@ -15,6 +15,7 @@ export const TourTable = (props) => {
   }
   return (
     <>
+
       <Card style={{ textAlign: "center", width: "20rem" }}>
         <Card.Header>
           <Card.Title style={{ color: "green" }}>{props.title}</Card.Title>
@@ -34,34 +35,11 @@ export const TourTable = (props) => {
           ) : null}
         </Card.Body>
       </Card>
+
     </>
   );
 };
 
 export default TourTable;
 
-//   <>
-//     <tr>
-//       <th scope="row"></th>
-//       <td>{props.title}</td>
-//       <td>{props.description}</td>
-//       <td>{props.cafes}</td>
-//       <td>{props.district}</td>
-//       <td>{props.date}</td>
-//       {user.isAdmin ? (
-//         <td>
-//           <Button style={{ backgroundColor: "red" }} onClick={Delete}>
-//             Delete Tour
-//           </Button>
-//         </td>
-//       ) : null}
-//         <td>
 
-//
-//       <Button>See Details</Button>
-//
-//           </td>
-//         </tr>
-
-//   </>
-// );
