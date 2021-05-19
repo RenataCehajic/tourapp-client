@@ -63,7 +63,7 @@ function DetailedTourPages() {
           <p class="lead">{tour.district}</p>
           <p class="lead">{tour.description}</p>
           <p class="lead">Cafes: {tour.cafes}</p>
-          <p class="lead">Already signed up: /amountofusers/</p>
+          <p class="lead">Already signed up: {tour.users?.length}</p>
           <p class="lead"> /allusers/ </p>
           {!user ? null : <Button onClick={enroll}>Enroll</Button>}
         </div>
