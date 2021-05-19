@@ -1,7 +1,8 @@
-import { GETALLTOURS, DELETETOUR, ADDTOUR } from "./action";
+import { GETALLTOURS, DELETETOUR, ADDTOUR, SAVEDETAILEDTOUR } from "./action";
 
 const initialState = {
   tours: [],
+  detailedTour: {},
 };
 
 export default function reducer(state = initialState, action) {
@@ -10,6 +11,11 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         tours: action.payload,
+      };
+    case SAVEDETAILEDTOUR:
+      return {
+        ...state,
+        detailedTour: action.payload,
       };
     case ADDTOUR:
       return { ...state, tours: [...state.tours, action.payload] };

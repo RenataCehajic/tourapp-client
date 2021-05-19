@@ -13,7 +13,7 @@ export const TourTable = (props) => {
         <td>{props.district}</td>
         <td>{props.date}</td>
       </tr>
-      <Link path={`/tours/:${props.id}`}>
+      <Link to={`/tours/${props.id}`}>
         <Button>See Details</Button>
       </Link>
     </>
