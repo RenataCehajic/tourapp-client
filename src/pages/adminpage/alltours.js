@@ -1,20 +1,47 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllTours } from "../../store/admin/action";
 import { getAllToursSelector } from "../../store/admin/selector";
 import TourTableComponent from "../../components/Tour/tour";
 const moment = require("moment");
+
 const Alltours = () => {
   const dispatch = useDispatch();
   const alltours = useSelector(getAllToursSelector);
   console.log(alltours);
 
+  const [selectedOption, set_selectedOption] = useState("all");
+  const [filteredTours, set_filteredTours] = useState([]);
+
   useEffect(() => {
     dispatch(getAllTours());
   }, [dispatch]);
 
+  const handleSelect = (event) => {
+    set_selectedOption(event.target.value);
+
+    const filterTours = alltours.filter((tour) => {
+      return tour.district.includes(event.target.value);
+    });
+    set_filteredTours(filterTours);
+  };
+
   return (
     <div class="table-responsive">
+      <select
+        onChange={handleSelect}
+        value={selectedOption}
+        name="district"
+        id="district-select"
+      >
+        <option value="all">All Districts</option>
+        <option value="Centrum">Centrum</option>
+        <option value="north">North</option>
+        <option value="east">East</option>
+        <option value="south">South</option>
+        <option value="west">West</option>
+      </select>
+
       <table class="table">
         <thead>
           <tr>
@@ -27,18 +54,31 @@ const Alltours = () => {
           </tr>
         </thead>
         <tbody>
-          {alltours.map((tour, index) => {
-            return (
-              <TourTableComponent
-                title={tour.title}
-                key={index}
-                description={tour.description}
-                cafes={tour.cafes}
-                district={tour.district}
-                date={moment(tour.date).format("YYYY-MM-DD")}
-              />
-            );
-          })}
+          {selectedOption === "all"
+            ? alltours.map((tour, index) => {
+                return (
+                  <TourTableComponent
+                    title={tour.title}
+                    key={index}
+                    description={tour.description}
+                    cafes={tour.cafes}
+                    district={tour.district}
+                    date={moment(tour.date).format("YYYY-MM-DD")}
+                  />
+                );
+              })
+            : filteredTours.map((tour, index) => {
+                return (
+                  <TourTableComponent
+                    title={tour.title}
+                    key={index}
+                    description={tour.description}
+                    cafes={tour.cafes}
+                    district={tour.district}
+                    date={moment(tour.date).format("YYYY-MM-DD")}
+                  />
+                );
+              })}
         </tbody>
       </table>
     </div>
