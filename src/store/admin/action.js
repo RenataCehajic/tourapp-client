@@ -8,8 +8,10 @@ import {
   showMessageWithTimeout,
   setMessage,
 } from "../appState/actions";
+import { useSelector } from "react-redux";
 
 export const GETALLTOURS = "GETALLTOURS";
+export const SAVEDETAILEDTOUR = "SAVEDETAILEDTOUR";
 export const ADDTOUR = "ADDTOUR";
 export const DELETETOUR = "DELETETOUR";
 
@@ -17,6 +19,13 @@ const getTours = (tours) => {
   return {
     type: GETALLTOURS,
     payload: tours,
+  };
+};
+
+const saveDetailedTour = (tour) => {
+  return {
+    type: SAVEDETAILEDTOUR,
+    payload: tour,
   };
 };
 
@@ -114,6 +123,59 @@ export const DeleteTour = (tourId) => {
       });
       console.log(`RESPONSE DELETED TOUR`, response);
       dispatch(deleteTour(response.data));
+      dispatch(appDoneLoading());
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        dispatch(setMessage("danger", true, error.response.data.message));
+      } else {
+        console.log(error.message);
+        dispatch(setMessage("danger", true, error.message));
+      }
+    }
+  };
+};
+
+export const getDetailedTour = (tourid) => {
+  return async (dispatch, getState) => {
+    dispatch(appLoading());
+
+    //const token = selectToken(getState());
+    try {
+      const response = await axios.get(`${apiUrl}/tours/${tourid}`);
+      console.log(`RESPONSE I GOT:`, response);
+      dispatch(saveDetailedTour(response.data));
+      dispatch(appDoneLoading());
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        dispatch(setMessage("danger", true, error.response.data.message));
+      } else {
+        console.log(error.message);
+        dispatch(setMessage("danger", true, error.message));
+      }
+    }
+  };
+};
+
+export const enrollToTour = (tourid) => {
+  return async (dispatch, getState) => {
+    dispatch(appLoading());
+
+    const token = selectToken(getState());
+
+    try {
+      const response = await axios.post(
+        `${apiUrl}/tours/${tourid}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response.data);
+
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {

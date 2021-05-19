@@ -28,7 +28,17 @@ export const TourTable = (props) => {
             </Button>
           </td>
         ) : null}
-      </tr>
+          <td>
+          
+      <Link to={`/tours/${props.id}`}>
+        <Button>See Details</Button>
+      </Link>
+            </td>
+          </tr>
+
+
+   
+
     </>
   );
 };

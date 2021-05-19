@@ -57,12 +57,13 @@ const Alltours = () => {
         </thead>
         <tbody>
           {selectedOption === "all"
-            ? alltours.map((tour, index) => {
+            ? alltours.map((tour) => {
                 return (
                   <TourTableComponent
                     id={tour.id}
                     title={tour.title}
-                    key={index}
+                    id={tour.id}
+                    key={tour.id}
                     description={tour.description}
                     cafes={tour.cafes}
                     district={tour.district}
@@ -70,12 +71,13 @@ const Alltours = () => {
                   />
                 );
               })
-            : filteredTours.map((tour, index) => {
+            : filteredTours.map((tour) => {
                 return (
                   <TourTableComponent
                     id={tour.id}
                     title={tour.title}
-                    key={index}
+                    id={tour.id}
+                    key={tour.id}
                     description={tour.description}
                     cafes={tour.cafes}
                     district={tour.district}
