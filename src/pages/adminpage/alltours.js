@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { CardColumns } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllTours } from "../../store/admin/action";
 import { getAllToursSelector } from "../../store/admin/selector";
@@ -43,7 +44,7 @@ const Alltours = () => {
         <option value="South">South</option>
         <option value="West">West</option>
       </select>
-      <div>
+      <CardColumns>
         {selectedOption === "all"
           ? alltours.map((tour) => {
               return (
@@ -73,7 +74,7 @@ const Alltours = () => {
                 />
               );
             })}
-      </div>
+      </CardColumns>
     </div>
   );
 };

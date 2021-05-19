@@ -149,7 +149,7 @@ export const getDetailedTour = (tourid) => {
     //const token = selectToken(getState());
     try {
       const response = await axios.get(`${apiUrl}/tours/${tourid}`);
-      console.log(`RESPONSE I GOT:`, response);
+      console.log(`RESPONSE I GOT:`, response.data);
       dispatch(saveDetailedTour(response.data));
       dispatch(appDoneLoading());
     } catch (error) {
@@ -181,7 +181,14 @@ export const enrollToTour = (tourid) => {
         }
       );
       console.log(response.data);
-
+      dispatch(
+        showMessageWithTimeout(
+          "success",
+          false,
+          "You successfully enrolled!",
+          1500
+        )
+      );
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {

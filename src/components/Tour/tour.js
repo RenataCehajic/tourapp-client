@@ -15,8 +15,7 @@ export const TourTable = (props) => {
   }
   return (
     <>
-
-      <Card style={{ textAlign: "center", width: "20rem" }}>
+      <Card style={{ textAlign: "center", width: "15rem", height: "20rem" }}>
         <Card.Header>
           <Card.Title style={{ color: "green" }}>{props.title}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
@@ -35,11 +34,8 @@ export const TourTable = (props) => {
           ) : null}
         </Card.Body>
       </Card>
-
     </>
   );
 };
 
 export default TourTable;
-
-
