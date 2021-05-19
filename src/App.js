@@ -10,7 +10,7 @@ import MessageBox from "./components/MessageBox";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import About from "./pages/About/About";
-//import DetailedTourPage from "./pages/DetailedTourPage/DetailedTourPage";
+import DetailedTourPage from "./pages/DetailedTourPage/DetailedTourPage";
 import CreateTourPage from "./pages/adminpage/tourcreation";
 import allToursPage from "./pages/adminpage/alltours";
 
@@ -48,7 +48,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/addtour" component={CreateTourPage} />
-
+        <Route path="/tours/:tourid" component={DetailedTourPage} />
         <Route path="/tours" component={allToursPage} />
         <Route path="/about" component={About} />
         <Route path="/signup" component={SignUp} />
