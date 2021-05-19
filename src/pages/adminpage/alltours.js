@@ -29,7 +29,7 @@ const Alltours = () => {
   };
 
   return (
-    <div class="table-responsive">
+    <div>
       <select
         onChange={handleSelect}
         value={selectedOption}
@@ -43,50 +43,37 @@ const Alltours = () => {
         <option value="South">South</option>
         <option value="West">West</option>
       </select>
-
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col">District</th>
-            <th scope="col">Cafes</th>
-            <th scope="col">File</th>
-            <th scope="col">Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          {selectedOption === "all"
-            ? alltours.map((tour) => {
-                return (
-                  <TourTableComponent
-                    id={tour.id}
-                    title={tour.title}
-                    id={tour.id}
-                    key={tour.id}
-                    description={tour.description}
-                    cafes={tour.cafes}
-                    district={tour.district}
-                    date={moment(tour.date).format("YYYY-MM-DD")}
-                  />
-                );
-              })
-            : filteredTours.map((tour) => {
-                return (
-                  <TourTableComponent
-                    id={tour.id}
-                    title={tour.title}
-                    id={tour.id}
-                    key={tour.id}
-                    description={tour.description}
-                    cafes={tour.cafes}
-                    district={tour.district}
-                    date={moment(tour.date).format("YYYY-MM-DD")}
-                  />
-                );
-              })}
-        </tbody>
-      </table>
+      <div>
+        {selectedOption === "all"
+          ? alltours.map((tour) => {
+              return (
+                <TourTableComponent
+                  id={tour.id}
+                  title={tour.title}
+                  id={tour.id}
+                  key={tour.id}
+                  description={tour.description}
+                  cafes={tour.cafes}
+                  district={tour.district}
+                  date={moment(tour.date).format("YYYY-MM-DD")}
+                />
+              );
+            })
+          : filteredTours.map((tour) => {
+              return (
+                <TourTableComponent
+                  id={tour.id}
+                  title={tour.title}
+                  id={tour.id}
+                  key={tour.id}
+                  description={tour.description}
+                  cafes={tour.cafes}
+                  district={tour.district}
+                  date={moment(tour.date).format("YYYY-MM-DD")}
+                />
+              );
+            })}
+      </div>
     </div>
   );
 };

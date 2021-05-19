@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "../../store/user/selectors";
 import { DeleteTour } from "../../store/admin/action";
+import Card from "react-bootstrap/Card";
 
 export const TourTable = (props) => {
   const user = useSelector(selectUser);
@@ -14,33 +15,53 @@ export const TourTable = (props) => {
   }
   return (
     <>
-      <tr>
-        <th scope="row"></th>
-        <td>{props.title}</td>
-        <td>{props.description}</td>
-        <td>{props.cafes}</td>
-        <td>{props.district}</td>
-        <td>{props.date}</td>
-        {user.isAdmin ? (
-          <td>
+      <Card style={{ textAlign: "center", width: "20rem" }}>
+        <Card.Header>
+          <Card.Title style={{ color: "green" }}>{props.title}</Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">
+            {props.district}
+          </Card.Subtitle>
+        </Card.Header>
+        <Card.Body>
+          <Card.Text>Cafe's: {props.cafes}</Card.Text>
+          <Link to={`/tours/${props.id}`}>
+            <Card.Link> More information & enroll</Card.Link>
+          </Link>
+          {user.isAdmin ? (
             <Button style={{ backgroundColor: "red" }} onClick={Delete}>
               Delete Tour
             </Button>
-          </td>
-        ) : null}
-          <td>
-          
-      <Link to={`/tours/${props.id}`}>
-        <Button>See Details</Button>
-      </Link>
-            </td>
-          </tr>
-
-
-   
-
+          ) : null}
+        </Card.Body>
+      </Card>
     </>
   );
 };
 
 export default TourTable;
+
+//   <>
+//     <tr>
+//       <th scope="row"></th>
+//       <td>{props.title}</td>
+//       <td>{props.description}</td>
+//       <td>{props.cafes}</td>
+//       <td>{props.district}</td>
+//       <td>{props.date}</td>
+//       {user.isAdmin ? (
+//         <td>
+//           <Button style={{ backgroundColor: "red" }} onClick={Delete}>
+//             Delete Tour
+//           </Button>
+//         </td>
+//       ) : null}
+//         <td>
+
+//
+//       <Button>See Details</Button>
+//
+//           </td>
+//         </tr>
+
+//   </>
+// );
