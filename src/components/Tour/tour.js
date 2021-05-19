@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 export const TourTable = (props) => {
   return (
@@ -11,6 +13,9 @@ export const TourTable = (props) => {
         <td>{props.district}</td>
         <td>{props.date}</td>
       </tr>
+      <Link path={`/tours/:${props.id}`}>
+        <Button>See Details</Button>
+      </Link>
     </>
   );
 };

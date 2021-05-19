@@ -13,10 +13,11 @@ const TourCreation = () => {
   const history = useHistory();
   const user = useSelector(selectUser);
   const [form, setform] = useState({
-    name: "",
+    title: "",
     cafes: "",
     description: "",
     district: "",
+    date: moment().format("YYYY-MM-DD"),
   });
 
   function Submit() {
@@ -24,16 +25,17 @@ const TourCreation = () => {
 
     dispatch(
       CreateTour(
-        form.name,
+        form.title,
         form.cafes,
         form.description,
         form.district,
-        form.date
+        form.date,
+        history
       )
     );
 
     setform({
-      name: "",
+      title: "",
       cafes: "",
       description: "",
       district: "",
@@ -53,8 +55,10 @@ const TourCreation = () => {
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Name of Tour</Form.Label>
           <Form.Control
-            value={form.name}
-            onChange={(event) => setform({ ...form, name: event.target.value })}
+            value={form.title}
+            onChange={(event) =>
+              setform({ ...form, title: event.target.value })
+            }
             type="text"
             placeholder="Enter name of the tour"
             required

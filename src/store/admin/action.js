@@ -1,6 +1,7 @@
 import axios from "axios";
 import { selectToken } from "../user/selectors";
 import { apiUrl } from "../../config/constants";
+
 import {
   appLoading,
   appDoneLoading,
@@ -55,7 +56,14 @@ export const getAllTours = () => {
   };
 };
 
-export const CreateTour = (name, cafe, description, district, date) => {
+export const CreateTour = (
+  title,
+  cafes,
+  description,
+  district,
+  date,
+  history
+) => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
 
@@ -65,8 +73,8 @@ export const CreateTour = (name, cafe, description, district, date) => {
       const response = await axios.post(
         `${apiUrl}/tours`,
         {
-          name,
-          cafe,
+          title,
+          cafes,
           description,
           district,
           date,
@@ -78,6 +86,7 @@ export const CreateTour = (name, cafe, description, district, date) => {
         }
       );
       dispatch(addTour(response.data));
+      history.push("/tours");
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {

@@ -36,10 +36,10 @@ const Alltours = () => {
       >
         <option value="all">All Districts</option>
         <option value="Centrum">Centrum</option>
-        <option value="north">North</option>
-        <option value="east">East</option>
-        <option value="south">South</option>
-        <option value="west">West</option>
+        <option value="North">North</option>
+        <option value="East">East</option>
+        <option value="South">South</option>
+        <option value="West">West</option>
       </select>
 
       <table class="table">
