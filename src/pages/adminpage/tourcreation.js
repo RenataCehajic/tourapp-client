@@ -17,6 +17,7 @@ const TourCreation = () => {
     cafes: "",
     description: "",
     district: "",
+    imageUrl: "",
     date: moment().format("YYYY-MM-DD"),
   });
 
@@ -30,6 +31,7 @@ const TourCreation = () => {
         form.description,
         form.district,
         form.date,
+        form.imageUrl,
         history
       )
     );
@@ -39,6 +41,7 @@ const TourCreation = () => {
       cafes: "",
       description: "",
       district: "",
+      imageUrl: "",
       date: moment().format("YYYY-MM-DD"),
     });
   }
@@ -109,6 +112,19 @@ const TourCreation = () => {
             onChange={(event) => setform({ ...form, date: event.target.value })}
             type="datetime-local"
             placeholder="Enter date"
+            required
+          />
+        </Form.Group>
+
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>Enter imageUrl</Form.Label>
+          <Form.Control
+            value={form.imageUrl}
+            onChange={(event) =>
+              setform({ ...form, imageUrl: event.target.value })
+            }
+            type="imageUrl"
+            placeholder="Enter imageURL"
             required
           />
         </Form.Group>

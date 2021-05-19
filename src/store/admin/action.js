@@ -77,6 +77,7 @@ export const CreateTour = (
   description,
   district,
   date,
+  imageUrl,
   history
 ) => {
   return async (dispatch, getState) => {
@@ -93,6 +94,7 @@ export const CreateTour = (
           description,
           district,
           date,
+          imageUrl,
         },
         {
           headers: {
