@@ -198,7 +198,6 @@ export const enrollToTour = (tourid) => {
 export const incrementLikes = (tourid) => {
   return async (dispatch, getState) => {
     const response = await axios.patch(`${apiUrl}/tours/${tourid}`);
-    console.log("what do I get", response.data);
     dispatch(incrementingLikes(response.data));
   };
 };

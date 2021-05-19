@@ -37,7 +37,7 @@ export default function reducer(state = initialState, action) {
     case UPDATED_TOUR_LIKES:
       return {
         ...state,
-        ...action.payload,
+        detailedTour: action.payload,
       };
 
     default:
