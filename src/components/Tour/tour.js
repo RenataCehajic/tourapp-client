@@ -21,6 +21,7 @@ export const TourTable = (props) => {
         <td>{props.cafes}</td>
         <td>{props.district}</td>
         <td>{props.date}</td>
+
         {user.isAdmin ? (
           <td>
             <Button style={{ backgroundColor: "red" }} onClick={Delete}>
@@ -28,17 +29,12 @@ export const TourTable = (props) => {
             </Button>
           </td>
         ) : null}
-          <td>
-          
-      <Link to={`/tours/${props.id}`}>
-        <Button>See Details</Button>
-      </Link>
-            </td>
-          </tr>
-
-
-   
-
+        <td>
+          <Link to={`/tours/${props.id}`}>
+            <Button>See Details</Button>
+          </Link>
+        </td>
+      </tr>
     </>
   );
 };
