@@ -31,19 +31,29 @@ const Alltours = () => {
 
   return (
     <div>
-      <select
-        onChange={handleSelect}
-        value={selectedOption}
-        name="district"
-        id="district-select"
+      <div
+        style={{
+          marginTop: "20px",
+          marginBottom: "20px",
+          display: "flex",
+          justifyContent: "center",
+        }}
       >
-        <option value="all">All Districts</option>
-        <option value="Centrum">Centrum</option>
-        <option value="North">North</option>
-        <option value="East">East</option>
-        <option value="South">South</option>
-        <option value="West">West</option>
-      </select>
+        <select
+          className="btn btn-lg btn-info"
+          onChange={handleSelect}
+          value={selectedOption}
+          name="district"
+          id="district-select"
+        >
+          <option value="all">All Districts</option>
+          <option value="Centrum">Centrum</option>
+          <option value="North">North</option>
+          <option value="East">East</option>
+          <option value="South">South</option>
+          <option value="West">West</option>
+        </select>
+      </div>
       <CardColumns>
         {selectedOption === "all"
           ? alltours.map((tour) => {
@@ -51,10 +61,7 @@ const Alltours = () => {
                 <TourTableComponent
                   id={tour.id}
                   title={tour.title}
-
                   imageUrl={tour.imageUrl}
-
-
                   key={tour.id}
                   description={tour.description}
                   cafes={tour.cafes}
@@ -68,10 +75,7 @@ const Alltours = () => {
                 <TourTableComponent
                   id={tour.id}
                   title={tour.title}
-
-               
                   imageUrl={tour.imageUrl}
-
                   key={tour.id}
                   description={tour.description}
                   cafes={tour.cafes}
