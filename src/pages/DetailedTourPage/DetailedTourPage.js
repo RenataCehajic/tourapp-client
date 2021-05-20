@@ -12,6 +12,7 @@ import { selectUser } from "../../store/user/selectors";
 function DetailedTourPages() {
   const { tourid } = useParams();
   const dispatch = useDispatch();
+  const tour = useSelector(getDetailedTourSelector);
 
   const tour = useSelector(getDetailedTourSelector);
 
@@ -21,6 +22,10 @@ function DetailedTourPages() {
     dispatch(getDetailedTour(tourid));
   }, []);
 
+
+  const user = useSelector(selectUser);
+ 
+
   const enroll = () => {
     dispatch(enrollToTour(tourid));
   };
@@ -29,6 +34,13 @@ function DetailedTourPages() {
     dispatch(incrementLikes(tourid));
   };
 
+  const cancelenroll = () => {
+    console.log(
+      `CANCEL ENROLLED`,
+      user.id,
+      tour?.enrollments.map((usertour) => usertour.userId)
+    );
+  };
   return (
     <div>
       {!tour ? (
@@ -76,6 +88,18 @@ function DetailedTourPages() {
               <Button onClick={enroll}>Enroll</Button>
             )}
           </div>
+
+          <p class="lead">{tour.district}</p>
+          <p class="lead">{tour.description}</p>
+          <p class="lead">Cafes: {tour.cafes}</p>
+          <p class="lead">Already signed up: {tour.enrollments?.length}</p>
+          <p class="lead"> /allusers/ </p>
+          {!user ? null : <Button onClick={enroll}>Enroll</Button>}
+          {user.id !==
+          tour.enrollments?.map((usertour) => usertour.userId) ? null : (
+            <Button onClick={cancelenroll}>Cancel Enroll</Button>
+          )}
+
         </div>
       )}
     </div>
