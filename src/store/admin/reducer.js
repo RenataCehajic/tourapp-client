@@ -8,7 +8,7 @@ import {
 
 const initialState = {
   tours: [],
-  detailedTour: {},
+  detailedTour: false,
 };
 
 export default function reducer(state = initialState, action) {

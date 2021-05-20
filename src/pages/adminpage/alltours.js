@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { CardColumns } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllTours } from "../../store/admin/action";
 import { getAllToursSelector } from "../../store/admin/selector";
@@ -43,13 +44,17 @@ const Alltours = () => {
         <option value="South">South</option>
         <option value="West">West</option>
       </select>
-      <div>
+      <CardColumns>
         {selectedOption === "all"
           ? alltours.map((tour) => {
               return (
                 <TourTableComponent
                   id={tour.id}
                   title={tour.title}
+
+                  imageUrl={tour.imageUrl}
+
+
                   key={tour.id}
                   description={tour.description}
                   cafes={tour.cafes}
@@ -63,6 +68,10 @@ const Alltours = () => {
                 <TourTableComponent
                   id={tour.id}
                   title={tour.title}
+
+               
+                  imageUrl={tour.imageUrl}
+
                   key={tour.id}
                   description={tour.description}
                   cafes={tour.cafes}
@@ -71,7 +80,7 @@ const Alltours = () => {
                 />
               );
             })}
-      </div>
+      </CardColumns>
     </div>
   );
 };

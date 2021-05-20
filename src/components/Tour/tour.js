@@ -10,13 +10,14 @@ export const TourTable = (props) => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
+  console.log(props.imageUrl);
+
   function Delete() {
     dispatch(DeleteTour(props.id));
   }
   return (
     <>
-
-      <Card style={{ textAlign: "center", width: "20rem" }}>
+      <Card style={{ textAlign: "center", width: "15rem", height: "20rem" }}>
         <Card.Header>
           <Card.Title style={{ color: "green" }}>{props.title}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
@@ -24,6 +25,7 @@ export const TourTable = (props) => {
           </Card.Subtitle>
         </Card.Header>
         <Card.Body>
+          <img style={{ width: "200px" }} src={props.imageUrl}></img>
           <Card.Text>Cafe's: {props.cafes}</Card.Text>
           <Link to={`/tours/${props.id}`}>
             <Card.Link> More information & enroll</Card.Link>
@@ -35,11 +37,8 @@ export const TourTable = (props) => {
           ) : null}
         </Card.Body>
       </Card>
-
     </>
   );
 };
 
 export default TourTable;
-
-
