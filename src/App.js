@@ -13,24 +13,11 @@ import About from "./pages/About/About";
 import DetailedTourPage from "./pages/DetailedTourPage/DetailedTourPage";
 import CreateTourPage from "./pages/adminpage/tourcreation";
 import allToursPage from "./pages/adminpage/alltours";
+import HomePage from "./pages/HomePage/HomePage";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
-
-const Home = () => (
-  <div>
-    <Container>
-      <Link
-        to={"/tours"}
-        className="btn btn-lg btn-info"
-        style={{ marginTop: "300px", marginLeft: "300px" }}
-      >
-        View Free Walking Tours in Amsterdam
-      </Link>
-    </Container>
-  </div>
-);
 
 function App() {
   const dispatch = useDispatch();
@@ -46,8 +33,7 @@ function App() {
       <MessageBox />
       {isLoading ? <Loading /> : null}
       <Switch>
-        <Route exact path="/" component={Home} />
-
+        <Route exact path="/" component={HomePage} />
         <Route path="/addtour" component={CreateTourPage} />
         <Route path="/tours/:tourid" component={DetailedTourPage} />
         <Route path="/tours" component={allToursPage} />

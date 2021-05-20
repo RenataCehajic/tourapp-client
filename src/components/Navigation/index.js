@@ -17,7 +17,7 @@ export default function Navigation() {
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand as={NavLink} to="/">
-        WALKING TOURS
+        AMSTERDAM FREE WALKING TOURS
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
@@ -27,7 +27,7 @@ export default function Navigation() {
           {token && user.isAdmin === true ? (
             <NavbarItem path="/addtour" linkText="Add New Tour" />
           ) : null}
-          <NavbarItem path="/about" linkText="About" />
+          <NavbarItem path="/about" linkText="About Us" />
           {loginLogoutControls}
         </Nav>
       </Navbar.Collapse>
