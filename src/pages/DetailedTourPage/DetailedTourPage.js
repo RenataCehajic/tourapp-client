@@ -14,17 +14,11 @@ function DetailedTourPages() {
   const dispatch = useDispatch();
   const tour = useSelector(getDetailedTourSelector);
 
-  const tour = useSelector(getDetailedTourSelector);
-
   const user = useSelector(selectUser);
 
   useEffect(() => {
     dispatch(getDetailedTour(tourid));
   }, []);
-
-
-  const user = useSelector(selectUser);
- 
 
   const enroll = () => {
     dispatch(enrollToTour(tourid));
@@ -94,12 +88,12 @@ function DetailedTourPages() {
           <p class="lead">Cafes: {tour.cafes}</p>
           <p class="lead">Already signed up: {tour.enrollments?.length}</p>
           <p class="lead"> /allusers/ </p>
-          {!user ? null : <Button onClick={enroll}>Enroll</Button>}
-          {user.id !==
-          tour.enrollments?.map((usertour) => usertour.userId) ? null : (
-            <Button onClick={cancelenroll}>Cancel Enroll</Button>
-          )}
 
+          {tour.enrollments.some((e) => {
+            return e["userId"] === user.id ? (
+              <Button onClick={cancelenroll}>Cancel Enroll</Button>
+            ) : null;
+          })}
         </div>
       )}
     </div>
