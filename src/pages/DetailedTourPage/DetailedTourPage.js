@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getDetailedTour, incrementLikes } from "../../store/admin/action";
@@ -13,6 +13,8 @@ function DetailedTourPages() {
   const { tourid } = useParams();
   const dispatch = useDispatch();
   const tour = useSelector(getDetailedTourSelector);
+
+  console.log("tour", tour);
 
   const user = useSelector(selectUser);
 
@@ -33,65 +35,115 @@ function DetailedTourPages() {
     //console.log(`TOUR ID `, tourid, user.id);
   };
   return (
-    <div>
+    <div style={{ display: "flex", justifyContent: "center" }}>
       {!tour ? (
         <div></div>
       ) : (
-        <div class="jumbotron bg-dark text-white jumbotron-fluid">
-          <div class="container">
-            <h1 class="display-4">{tour.tourById.title}</h1>
-            <div style={{ marginTop: "40px" }}>
-              {user.token ? (
-                <h4
+        <Card style={{ width: "50%", marginTop: "20px", border: "none" }}>
+          <div className="container">
+            <Card.Header
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                flexDirection: "column",
+                backgroundColor: "white",
+                border: "none",
+              }}
+            >
+              <Card.Title style={{ fontSize: "2rem" }}>
+                {tour.tourById?.title}
+              </Card.Title>
+              <Card.Subtitle>{tour.tourById?.district}</Card.Subtitle>
+            </Card.Header>
+            <div style={{ display: "flex" }}>
+              <div style={{ width: "50%" }}>
+                <Card.Subtitle
                   style={{
-                    color: "#fff",
-                    marginTop: "3rem",
-                    marginBottom: "20px",
+                    fontSize: "1.5rem",
+                    marginTop: "10px",
+                    marginBottom: "10px",
                   }}
                 >
-                  {" "}
-                  Like
-                  <div>
+                  About the tour:
+                </Card.Subtitle>
+                <p class="lead">{tour.tourById?.description}</p>
+                <Card.Subtitle
+                  style={{
+                    fontSize: "1.25rem",
+                    marginTop: "10px",
+                    marginBottom: "10px",
+                  }}
+                >
+                  Cafes on the way:
+                </Card.Subtitle>
+                <p class="lead"> {tour.tourById?.cafes}</p>
+                <Card.Subtitle
+                  style={{
+                    fontSize: "1.25rem",
+                    marginTop: "10px",
+                    marginBottom: "10px",
+                  }}
+                >
+                  Already signed up:
+                </Card.Subtitle>
+                <p class="lead">{tour.enrollments?.length}</p>
+                {!user ||
+                tour.enrollments?.some((e) => {
+                  return e["userId"] === user.id;
+                }) ? null : (
+                  <Button onClick={enroll}>Enroll</Button>
+                )}{" "}
+                {tour?.enrollments?.map((e) => {
+                  return e["userId"] === user.id ? (
                     <Button
-                      style={{
-                        backgroundColor: "#fdff00",
-                        borderColor: "#000",
-                        marginTop: "10px",
-                      }}
-                      onClick={likeTour}
+                      style={{ backgroundColor: "red" }}
+                      onClick={cancelenroll}
                     >
-                      <span style={{ fontSize: "2rem" }}>❤</span>{" "}
+                      Cancel Enroll
                     </Button>
-                    <p class="lead">{tour.tourById.rate}</p>
-                  </div>
-                </h4>
-              ) : null}
+                  ) : null;
+                })}
+                <div style={{ margin: "10px" }}>
+                  {user.token ? (
+                    <h4
+                      style={{
+                        color: "#fff",
+                      }}
+                    >
+                      {" "}
+                      Like
+                      <div>
+                        <Button
+                          style={{
+                            backgroundColor: "#fdff00",
+                            borderColor: "#000",
+                          }}
+                          onClick={likeTour}
+                        >
+                          <span style={{ fontSize: "1.5rem" }}>❤</span>{" "}
+                        </Button>
+                        <p class="lead">{tour.tourById?.rate}</p>
+                      </div>
+                    </h4>
+                  ) : null}
+                </div>
+              </div>
+              <div
+                style={{
+                  width: "50%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <img
+                  style={{ maxHeight: "75%", maxWidth: "75%" }}
+                  src={tour.tourById?.imageUrl}
+                ></img>
+              </div>
             </div>
-            <p class="lead">{tour.tourById.district}</p>
-            <p class="lead">{tour.tourById.description}</p>
-            <p class="lead">Cafes: {tour.tourById.cafes}</p>
-            <p class="lead">Already signed up: /amountofusers/</p>
-            <p class="lead"> /allusers/ </p>
-            {!user ||
-            tour.enrollments.some((e) => {
-              return e["userId"] === user.id;
-            }) ? null : (
-              <Button onClick={enroll}>Enroll</Button>
-            )}
           </div>
-
-          <p class="lead">{tour.district}</p>
-          <p class="lead">{tour.description}</p>
-          <p class="lead">Cafes: {tour.cafes}</p>
-          <p class="lead">Already signed up: {tour.enrollments?.length}</p>
-          <p class="lead"> /allusers/ </p>
-
-          {tour?.enrollments.map((e) => {
-            return e["userId"] === user.id ? (
-              <Button onClick={cancelenroll}>Cancel Enroll</Button>
-            ) : null;
-          })}
-        </div>
+        </Card>
       )}
     </div>
   );
