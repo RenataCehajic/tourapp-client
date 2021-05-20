@@ -52,6 +52,7 @@ const Alltours = () => {
                   id={tour.id}
                   title={tour.title}
                   id={tour.id}
+                  imageUrl={tour.imageUrl}
                   key={tour.id}
                   description={tour.description}
                   cafes={tour.cafes}
@@ -66,6 +67,7 @@ const Alltours = () => {
                   id={tour.id}
                   title={tour.title}
                   id={tour.id}
+                  imageUrl={tour.imageUrl}
                   key={tour.id}
                   description={tour.description}
                   cafes={tour.cafes}

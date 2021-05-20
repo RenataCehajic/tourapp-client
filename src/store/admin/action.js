@@ -192,6 +192,7 @@ export const enrollToTour = (tourid) => {
         )
       );
       dispatch(appDoneLoading());
+      dispatch(getDetailedTour(tourid));
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);
