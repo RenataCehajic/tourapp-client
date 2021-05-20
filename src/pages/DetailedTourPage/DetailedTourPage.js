@@ -66,7 +66,7 @@ function DetailedTourPages() {
                 >
                   About the tour:
                 </Card.Subtitle>
-                <p class="lead">{tour.tourById?.description}</p>
+                <p className="lead">{tour.tourById?.description}</p>
                 <Card.Subtitle
                   style={{
                     fontSize: "1.25rem",
@@ -76,7 +76,7 @@ function DetailedTourPages() {
                 >
                   Cafes on the way:
                 </Card.Subtitle>
-                <p class="lead"> {tour.tourById?.cafes}</p>
+                <p className="lead"> {tour.tourById?.cafes}</p>
                 <Card.Subtitle
                   style={{
                     fontSize: "1.25rem",
@@ -86,7 +86,7 @@ function DetailedTourPages() {
                 >
                   Already signed up:
                 </Card.Subtitle>
-                <p class="lead">{tour.enrollments?.length}</p>
+                <p className="lead">{tour.enrollments?.length}</p>
                 {!user ||
                 tour.enrollments?.some((e) => {
                   return e["userId"] === user.id;

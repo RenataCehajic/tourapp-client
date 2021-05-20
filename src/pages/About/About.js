@@ -9,8 +9,8 @@ function About() {
         test our learned skills in REACT, Redux, HTML , CSS , REST API,
         Sequelize (PostGreSQL) and most importantly Github.
       </p>
-      <div class="card">
-        <div class="card-header" id="headername">
+      <div className="card">
+        <div className="card-header" id="headername">
           <a href="https://www.linkedin.com/in/erik-hendrikson-1a9805a0/">
             <img
               align="left"
@@ -32,13 +32,13 @@ function About() {
         <img
           src="https://avatars.githubusercontent.com/u/77502322?v=4"
           style={{ width: "20%", height: "20%" }}
-          class="card-img-top"
+          className="card-img-top"
           alt="erik's foto"
         />
         <span>Erik</span>
       </div>
-      <div class="card">
-        <div class="card-header" id="headername">
+      <div className="card">
+        <div className="card-header" id="headername">
           <a href="https://www.linkedin.com/in/renata-cehajic-49712630/">
             <img
               align="left"
@@ -60,13 +60,13 @@ function About() {
         <img
           src="https://avatars.githubusercontent.com/u/72190443?v=4"
           style={{ width: "20%", height: "20%" }}
-          class="card-img-top"
+          className="card-img-top"
           alt="Renata's foto"
         />
         <span>Renata</span>
       </div>
-      <div class="card">
-        <div class="card-header" id="headername">
+      <div className="card">
+        <div className="card-header" id="headername">
           <a href="https://www.linkedin.com/in/jannesaussems/">
             <img
               align="left"
@@ -87,7 +87,7 @@ function About() {
         <img
           src="https://avatars.githubusercontent.com/u/70952271?v=4"
           style={{ width: "20%", height: "20%" }}
-          class="card-img-top"
+          className="card-img-top"
           alt="Jannes's Foto"
         />
         <span>Jannes</span>

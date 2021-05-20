@@ -42,7 +42,7 @@ export const TourTable = (props) => {
             }}
           >
             <Link to={`/tours/${props.id}`}>
-              <Card.Link> More information & enroll</Card.Link>
+              <p> More information & enroll</p>
             </Link>
             {user.isAdmin ? (
               <Button
