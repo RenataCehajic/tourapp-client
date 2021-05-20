@@ -103,28 +103,47 @@ function DetailedTourPages() {
                     </Button>
                   ) : null;
                 })}
-                <div style={{ margin: "10px" }}>
+                <div
+                  style={{
+                    margin: "10px",
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
                   {user.token ? (
-                    <h4
-                      style={{
-                        color: "#fff",
-                      }}
-                    >
-                      {" "}
-                      Like
-                      <div>
-                        <Button
-                          style={{
-                            backgroundColor: "#fdff00",
-                            borderColor: "#000",
-                          }}
-                          onClick={likeTour}
-                        >
-                          <span style={{ fontSize: "1.5rem" }}>❤</span>{" "}
-                        </Button>
-                        <p class="lead">{tour.tourById?.rate}</p>
+                    <div style={{ display: "flex" }}>
+                      <div
+                        style={{
+                          color: "#fff",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          textAlign: "center",
+                        }}
+                      >
+                        {" "}
+                        Like
+                        <div>
+                          {" "}
+                          <div>
+                            <Button
+                              style={{
+                                backgroundColor: "#fdff00",
+                                borderColor: "#000",
+                              }}
+                              onClick={likeTour}
+                            >
+                              <span style={{ fontSize: "1.5rem" }}>❤</span>{" "}
+                            </Button>
+                          </div>
+                          <div>
+                            <p style={{ color: "black" }} className="lead">
+                              {tour.tourById?.rate}
+                            </p>
+                          </div>
+                        </div>
                       </div>
-                    </h4>
+                    </div>
                   ) : null}
                 </div>
               </div>
