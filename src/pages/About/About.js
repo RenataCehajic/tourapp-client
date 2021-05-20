@@ -6,8 +6,8 @@ function About() {
       <h1>About us:</h1>
       <p>
         This is a group assignment from Codaisseur, where we work together and
-        test our learned skills in REACT, Redux, HTML , CSS, and most
-        importantly Github.
+        test our learned skills in REACT, Redux, HTML , CSS , REST API,
+        Sequelize (PostGreSQL) and most importantly Github.
       </p>
       <div class="card">
         <div class="card-header" id="headername">
@@ -27,7 +27,6 @@ function About() {
               src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
             />
           </a>
-          Erik
         </div>
 
         <img
@@ -36,6 +35,7 @@ function About() {
           class="card-img-top"
           alt="erik's foto"
         />
+        <span>Erik</span>
       </div>
       <div class="card">
         <div class="card-header" id="headername">
@@ -55,7 +55,6 @@ function About() {
               src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
             />
           </a>
-          Renata
         </div>
 
         <img
@@ -64,6 +63,7 @@ function About() {
           class="card-img-top"
           alt="Renata's foto"
         />
+        <span>Renata</span>
       </div>
       <div class="card">
         <div class="card-header" id="headername">
@@ -83,7 +83,6 @@ function About() {
               src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
             />
           </a>
-          Jannes
         </div>
         <img
           src="https://avatars.githubusercontent.com/u/70952271?v=4"
@@ -91,6 +90,7 @@ function About() {
           class="card-img-top"
           alt="Jannes's Foto"
         />
+        <span>Jannes</span>
       </div>
     </div>
   );
