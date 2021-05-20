@@ -10,6 +10,8 @@ export const TourTable = (props) => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
+  console.log(props.imageUrl);
+
   function Delete() {
     dispatch(DeleteTour(props.id));
   }
@@ -23,6 +25,7 @@ export const TourTable = (props) => {
           </Card.Subtitle>
         </Card.Header>
         <Card.Body>
+          <img style={{ width: "200px" }} src={props.imageUrl}></img>
           <Card.Text>Cafe's: {props.cafes}</Card.Text>
           <Link to={`/tours/${props.id}`}>
             <Card.Link> More information & enroll</Card.Link>

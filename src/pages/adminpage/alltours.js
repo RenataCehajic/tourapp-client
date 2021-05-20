@@ -51,6 +51,10 @@ const Alltours = () => {
                 <TourTableComponent
                   id={tour.id}
                   title={tour.title}
+
+                  imageUrl={tour.imageUrl}
+
+
                   key={tour.id}
                   description={tour.description}
                   cafes={tour.cafes}
@@ -64,6 +68,10 @@ const Alltours = () => {
                 <TourTableComponent
                   id={tour.id}
                   title={tour.title}
+
+               
+                  imageUrl={tour.imageUrl}
+
                   key={tour.id}
                   description={tour.description}
                   cafes={tour.cafes}
