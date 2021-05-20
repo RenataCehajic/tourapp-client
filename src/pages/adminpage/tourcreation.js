@@ -54,7 +54,7 @@ const TourCreation = () => {
   return (
     <Container>
       <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">
-        <h1 className="mt-5 mb-5">Login</h1>
+        <h1 className="mt-5 mb-5">Create Tour</h1>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Name of Tour</Form.Label>
           <Form.Control
