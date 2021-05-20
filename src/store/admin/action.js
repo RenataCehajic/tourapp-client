@@ -205,6 +205,41 @@ export const enrollToTour = (tourid) => {
   };
 };
 
+export const cancelEnrolltour = (tourid) => {
+  return async (dispatch, getState) => {
+    dispatch(appLoading());
+
+    const token = selectToken(getState());
+
+    try {
+      const response = await axios.delete(`${apiUrl}/tours/${tourid}/enroll`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(response.data);
+      dispatch(
+        showMessageWithTimeout(
+          "success",
+          false,
+          "You successfully  unrolled!",
+          1500
+        )
+      );
+      dispatch(appDoneLoading());
+      dispatch(getDetailedTour(tourid));
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        dispatch(setMessage("danger", true, error.response.data.message));
+      } else {
+        console.log(error.message);
+        dispatch(setMessage("danger", true, error.message));
+      }
+    }
+  };
+};
+
 export const incrementLikes = (tourid) => {
   return async (dispatch, getState) => {
     const response = await axios.patch(`${apiUrl}/tours/${tourid}`);

@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getDetailedTour, incrementLikes } from "../../store/admin/action";
-import { enrollToTour } from "../../store/admin/action";
+import { enrollToTour, cancelEnrolltour } from "../../store/admin/action";
 import { getDetailedTourSelector } from "../../store/admin/selector";
 import { selectUser } from "../../store/user/selectors";
 
@@ -29,11 +29,8 @@ function DetailedTourPages() {
   };
 
   const cancelenroll = () => {
-    console.log(
-      `CANCEL ENROLLED`,
-      user.id,
-      tour?.enrollments.map((usertour) => usertour.userId)
-    );
+    dispatch(cancelEnrolltour(tourid));
+    //console.log(`TOUR ID `, tourid, user.id);
   };
   return (
     <div>
@@ -89,7 +86,7 @@ function DetailedTourPages() {
           <p class="lead">Already signed up: {tour.enrollments?.length}</p>
           <p class="lead"> /allusers/ </p>
 
-          {tour.enrollments.some((e) => {
+          {tour?.enrollments.map((e) => {
             return e["userId"] === user.id ? (
               <Button onClick={cancelenroll}>Cancel Enroll</Button>
             ) : null;
