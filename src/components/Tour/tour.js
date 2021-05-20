@@ -16,28 +16,46 @@ export const TourTable = (props) => {
     dispatch(DeleteTour(props.id));
   }
   return (
-    <>
-      <Card style={{ textAlign: "center", width: "15rem", height: "20rem" }}>
-        <Card.Header>
+    <div className="container">
+      <Card
+        style={{
+          textAlign: "center",
+        }}
+      >
+        <img
+          className="card-img-top"
+          style={{ width: "200px", height: "150px" }}
+          src={props.imageUrl}
+        ></img>
+        <Card.Body>
           <Card.Title style={{ color: "green" }}>{props.title}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
             {props.district}
           </Card.Subtitle>
-        </Card.Header>
-        <Card.Body>
-          <img style={{ width: "200px" }} src={props.imageUrl}></img>
+
           <Card.Text>Cafe's: {props.cafes}</Card.Text>
-          <Link to={`/tours/${props.id}`}>
-            <Card.Link> More information & enroll</Card.Link>
-          </Link>
-          {user.isAdmin ? (
-            <Button style={{ backgroundColor: "red" }} onClick={Delete}>
-              Delete Tour
-            </Button>
-          ) : null}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Link to={`/tours/${props.id}`}>
+              <Card.Link> More information & enroll</Card.Link>
+            </Link>
+            {user.isAdmin ? (
+              <Button
+                style={{ backgroundColor: "red", width: "40%", margin: "20px" }}
+                onClick={Delete}
+              >
+                Delete Tour
+              </Button>
+            ) : null}
+          </div>
         </Card.Body>
       </Card>
-    </>
+    </div>
   );
 };
 

@@ -132,6 +132,7 @@ export const DeleteTour = (tourId) => {
       console.log(`RESPONSE DELETED TOUR`, response);
       dispatch(deleteTour(response.data));
       dispatch(appDoneLoading());
+      dispatch(getAllTours());
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);
@@ -244,5 +245,6 @@ export const incrementLikes = (tourid) => {
   return async (dispatch, getState) => {
     const response = await axios.patch(`${apiUrl}/tours/${tourid}`);
     dispatch(incrementingLikes(response.data));
+    dispatch(getDetailedTour(tourid));
   };
 };
