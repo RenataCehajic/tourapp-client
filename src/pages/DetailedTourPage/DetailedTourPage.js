@@ -87,7 +87,7 @@ function DetailedTourPages() {
                   Already signed up:
                 </Card.Subtitle>
                 <p className="lead">{tour.enrollments?.length}</p>
-                {!user ||
+                {!user.token ||
                 tour.enrollments?.some((e) => {
                   return e["userId"] === user.id;
                 }) ? null : (
