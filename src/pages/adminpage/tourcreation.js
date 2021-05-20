@@ -94,15 +94,22 @@ const TourCreation = () => {
         </Form.Group>
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Enter district</Form.Label>
-          <Form.Control
-            value={form.district}
+          <select
+            style={{ display: "flex", padding: "2px" }}
+            className="btn btn-lg btn-info"
             onChange={(event) =>
               setform({ ...form, district: event.target.value })
             }
-            type="district"
-            placeholder="Enter district"
-            required
-          />
+            value={form.district}
+            name="district"
+            id="district-select"
+          >
+            <option value="Centrum">Centrum</option>
+            <option value="North">North</option>
+            <option value="East">East</option>
+            <option value="South">South</option>
+            <option value="West">West</option>
+          </select>
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
